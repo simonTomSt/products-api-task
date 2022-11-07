@@ -1,15 +1,13 @@
-import express, { Express, Request, Response } from 'express';
-import env from './config/env';
+import 'reflect-metadata';
+import { Application } from '@services/application';
 
-const app: Express = express();
-const port = process.env.PORT;
+const bootstrap = async () => {
+  const app = new Application({
+    defaultScope: 'Singleton',
+  });
 
-app.get('/', (req: Request, res: Response) => {
-  res.send('Express + TypeScript Server');
-});
+  app.configureServices();
+  await app.setup();
+};
 
-app.listen(port, () => {
-  console.log(
-    `⚡️[server]: Server is running at https://localhost:${env.PORT}`
-  );
-});
+bootstrap();

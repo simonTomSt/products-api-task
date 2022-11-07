@@ -2,15 +2,21 @@
   "compilerOptions": {
     "module": "commonjs",
     "esModuleInterop": true,
-    "target": "es2016",
+    "target": "es6",
     "noImplicitAny": true,
     "moduleResolution": "node",
     "sourceMap": true,
     "outDir": "dist",
     "baseUrl": ".",
     "paths": {
-      "*": ["node_modules/*"]
-    }
-  },
-  "include": ["src/**/*"]
+      "@config/*": ["src/config/*"],
+      "@modules/*": ["src/modules/*"],
+      "@services/*": ["src/services/*"],
+      "@middleware/*": ["src/middleware/*"],
+      "@db/*": ["src/db/*"]
+    },
+    "types": ["reflect-metadata"],
+    "experimentalDecorators": true,
+    "emitDecoratorMetadata": true
+  }
 }

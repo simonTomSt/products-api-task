@@ -1,3 +1,4 @@
+import { HttpError } from '@utils/http-error';
 import { injectable } from 'inversify';
 import { Product } from '../../db/entities/product.entity';
 import { ProductsRepositoryService } from './products.repository';
@@ -17,7 +18,8 @@ export class ProductsService {
   async findById(id: Product['id']) {
     const product = await this.productsRepositoryService.findById(id);
 
-    if (!product) throw new Error('No product found with the given id');
+    if (!product)
+      throw new HttpError(404, 'No product found with the given id');
 
     return product;
   }

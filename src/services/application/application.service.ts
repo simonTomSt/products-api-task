@@ -8,6 +8,7 @@ import {
 } from '@modules/products';
 import env from '@config/env';
 import { DatabaseService } from '@services/database';
+import { catchErrorMiddleware } from '@middleware/catch-error';
 
 export class Application {
   private readonly container: Container;
@@ -32,7 +33,7 @@ export class Application {
       app.use(express.json());
     });
 
-    server.setErrorConfig(() => {});
+    server.setErrorConfig((app) => app.use(catchErrorMiddleware));
 
     const app = server.build();
 

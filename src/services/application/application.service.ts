@@ -1,6 +1,11 @@
 import express from 'express';
 import { Container, type interfaces } from 'inversify';
 import { InversifyExpressServer } from 'inversify-express-utils';
+import {
+  ProductsService,
+  ProductsController as _,
+  ProductsRepositoryService,
+} from '@modules/products';
 import env from '@config/env';
 import { DatabaseService } from '@services/database';
 
@@ -13,6 +18,8 @@ export class Application {
 
   configureServices() {
     this.container.bind(DatabaseService).toSelf();
+    this.container.bind(ProductsRepositoryService).toSelf();
+    this.container.bind(ProductsService).toSelf();
   }
 
   async setup() {

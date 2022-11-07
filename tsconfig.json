@@ -13,6 +13,8 @@
       "@modules/*": ["src/modules/*"],
       "@services/*": ["src/services/*"],
       "@middleware/*": ["src/middleware/*"],
+      "@utils/*": ["src/utils/*"],
+      "@docs/*": ["src/docs/*"],
       "@db/*": ["src/db/*"]
     },
     "types": ["reflect-metadata"],

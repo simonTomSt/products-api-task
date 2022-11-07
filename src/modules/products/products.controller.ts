@@ -1,4 +1,5 @@
-import { Request, Response } from 'express';
+import { validateRequest } from '@middleware/validate-request.middleware';
+import type { Request, Response } from 'express';
 import {
   controller,
   httpDelete,
@@ -11,6 +12,10 @@ import {
 } from 'inversify-express-utils';
 import { Product } from 'src/db/entities';
 import { ProductsService } from './products.service';
+import {
+  createProductValidator,
+  updateProductValidator,
+} from './products.validators';
 
 @controller('/products')
 export class ProductsController {
@@ -38,7 +43,7 @@ export class ProductsController {
     });
   }
 
-  @httpPost('/')
+  @httpPost('/', ...validateRequest(createProductValidator))
   async createOne(@requestBody() body: Product, @response() res: Response) {
     const product = await this.productsService.createOne(body);
 
@@ -49,7 +54,7 @@ export class ProductsController {
     });
   }
 
-  @httpPatch('/:id')
+  @httpPatch('/:id', ...validateRequest(updateProductValidator))
   async updateOne(
     @requestParam('id') id: string,
     @requestBody() body: Product,

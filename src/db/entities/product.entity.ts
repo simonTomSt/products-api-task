@@ -1,4 +1,10 @@
-import { Entity, Column, PrimaryGeneratedColumn, BaseEntity } from 'typeorm';
+import {
+  Entity,
+  Column,
+  PrimaryGeneratedColumn,
+  BaseEntity,
+  UpdateDateColumn,
+} from 'typeorm';
 
 @Entity()
 export class Product extends BaseEntity {
@@ -11,6 +17,6 @@ export class Product extends BaseEntity {
   @Column()
   price: number;
 
-  @Column()
+  @UpdateDateColumn()
   updateDate: Date;
 }

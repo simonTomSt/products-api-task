@@ -1,6 +1,6 @@
-import { HttpError } from '@utils/http-error';
 import { injectable } from 'inversify';
-import { Product } from '../../db/entities/product.entity';
+import { HttpError } from '@utils/http-error';
+import { Product } from '@db/entities/product.entity';
 import { ProductsRepositoryService } from './products.repository';
 
 @injectable()
@@ -43,6 +43,7 @@ export class ProductsService {
 
   async deleteById(id: Product['id']) {
     await this.findById(id);
+    await this.productsRepositoryService.deleteById(id);
 
     return id;
   }

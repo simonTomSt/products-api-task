@@ -1,5 +1,5 @@
 import { injectable } from 'inversify';
-import { DataSource } from 'typeorm';
+import type { DataSource } from 'typeorm';
 import dataSource from '@config/datasource';
 import { Product } from '@db/entities';
 

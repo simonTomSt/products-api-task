@@ -1,7 +1,7 @@
-import { DatabaseService } from '@services/database';
 import { injectable } from 'inversify';
 import { Repository } from 'typeorm';
-import { Product } from '../../db/entities/product.entity';
+import { DatabaseService } from '@services/database';
+import { Product } from '@db/entities/product.entity';
 
 @injectable()
 export class ProductsRepositoryService {
@@ -20,7 +20,7 @@ export class ProductsRepositoryService {
   }
 
   async createOne(payload: Product) {
-    return this.productsRepository.save(payload, {});
+    return this.productsRepository.save(payload);
   }
 
   async updateById(id: Product['id'], payload: Partial<Product>) {

@@ -10,7 +10,7 @@ import {
   requestParam,
   response,
 } from 'inversify-express-utils';
-import { Product } from 'src/db/entities';
+import { Product } from '@db/entities';
 import { ProductsService } from './products.service';
 import {
   createProductValidator,

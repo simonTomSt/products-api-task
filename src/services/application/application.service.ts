@@ -1,16 +1,16 @@
 import express from 'express';
+import swaggerUi from 'swagger-ui-express';
 import { Container, type interfaces } from 'inversify';
 import { InversifyExpressServer } from 'inversify-express-utils';
+import morgan from 'morgan';
+import env from '@config/env';
 import {
   ProductsService,
   ProductsController as _,
   ProductsRepositoryService,
 } from '@modules/products';
-import env from '@config/env';
 import { DatabaseService } from '@services/database';
 import { catchErrorMiddleware } from '@middleware/catch-error';
-import swaggerUi from 'swagger-ui-express';
-import morgan from 'morgan';
 
 export class Application {
   private readonly container: Container;

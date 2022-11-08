@@ -30,7 +30,7 @@ The documentation of the API (swagger) is available under `http://localhost:{POR
 
 You can test the api using for example [Insomnia](https://insomnia.rest/download) or [Postman](https://www.postman.com/downloads/).
 
-There are five endpoint specified:
+There are five endpoints specified:
 
 - `GET http://localhost:{PORT}/products`
 - `POST http://localhost:{PORT}/products`
@@ -50,3 +50,9 @@ There are five endpoint specified:
 - dotenv
 - morgan
 - express-validator
+
+## TODO
+
+- setup `jest` and `supertest`
+- write init tests
+- write basic e2e tests

@@ -47,7 +47,7 @@ export class ProductsController {
   async createOne(@requestBody() body: Product, @response() res: Response) {
     const product = await this.productsService.createOne(body);
 
-    res.json({
+    res.status(201).json({
       data: {
         product,
       },

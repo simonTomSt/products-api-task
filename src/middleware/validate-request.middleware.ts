@@ -6,7 +6,9 @@ export const validateRequest = (validators: ValidationChain[]) => [
   (req: Request, res: Response, next: NextFunction) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      return res.status(400).json({ data: {}, errors: errors.array() });
+      return res
+        .status(400)
+        .json({ data: {}, errors: errors.array().map(({ msg }) => msg) });
     }
     next();
   },

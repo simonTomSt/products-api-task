@@ -9,6 +9,7 @@ import {
 import env from '@config/env';
 import { DatabaseService } from '@services/database';
 import { catchErrorMiddleware } from '@middleware/catch-error';
+import swaggerUi from 'swagger-ui-express';
 
 export class Application {
   private readonly container: Container;
@@ -31,6 +32,11 @@ export class Application {
 
     server.setConfig((app) => {
       app.use(express.json());
+      app.use(
+        '/api-docs',
+        swaggerUi.serve,
+        swaggerUi.setup(require('src/docs/openapi.json'))
+      );
     });
 
     server.setErrorConfig((app) => app.use(catchErrorMiddleware));

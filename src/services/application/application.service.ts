@@ -10,6 +10,7 @@ import env from '@config/env';
 import { DatabaseService } from '@services/database';
 import { catchErrorMiddleware } from '@middleware/catch-error';
 import swaggerUi from 'swagger-ui-express';
+import morgan from 'morgan';
 
 export class Application {
   private readonly container: Container;
@@ -37,6 +38,7 @@ export class Application {
         swaggerUi.serve,
         swaggerUi.setup(require('src/docs/openapi.json'))
       );
+      app.use(morgan('dev'));
     });
 
     server.setErrorConfig((app) => app.use(catchErrorMiddleware));

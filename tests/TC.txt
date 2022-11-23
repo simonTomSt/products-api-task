@@ -1,0 +1,17 @@
+createProductValidator 
+
+1. Should return proper error when body product name is not defined
+2. Should return proper error when body product name chars length is over 100
+3. Should return proper error when body product name chars length is under 3
+4. Should return proper error when body product price is not defined
+5. Should return proper error when body product price is not a number
+6. Should not return any error when body data is correct
+
+updateProductValidator
+1. Should return proper error when body product name is not defined
+2. Should return proper error when body product name chars length is over 100
+3. Should return proper error when body product name chars length is under 3
+4. Should return proper error when body product price is not defined
+5. Should return proper error when body product price is not a number
+6. Should return proper error when param product id is not a number
+7. Should not return any error when body data and params are correct
